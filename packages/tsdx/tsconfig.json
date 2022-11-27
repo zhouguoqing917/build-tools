@@ -1,0 +1,23 @@
+{
+  "extends": "../../base.tsconfig.json",
+  "include": ["src/**/*"],
+  "exclude": ["src/template/**/*"],
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "jsx": "react",
+    "importHelpers": true,
+    "esModuleInterop": true,
+    "outDir": "lib",
+    "declaration": false,
+    "module": "commonjs",
+    "rootDir": "src",
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "target": "es2017"
+  }
+}

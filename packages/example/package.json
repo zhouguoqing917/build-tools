@@ -1,0 +1,54 @@
+{
+  "name": "@build-tools/example",
+  "version": "0.0.1",
+  "description": "build tools example",
+  "author": "zhouguoqing917 <zhouguoqing917@gmail.com>", 
+	"license": "MIT",
+  "types": "lib/index.d.ts",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "browser": "lib/index.umd.js",
+  "unpkg": "lib/index.umd.min.js",
+  "jsdelivr": "lib/index.umd.min.js",
+  "style": "lib/index.css",
+  "sideEffects": false,
+
+  "scripts": {
+    "prepare": "yarn build && yarn style",
+    "start": "tsdx watch",
+    "build": "tsdx build --name example --format umd && yarn tsc ",
+    "style": "tsdx style",
+    "test": "tsdx test --env=jsdom",
+    "lint": "tsdx lint",  
+   
+		"tsc": "tsc -p tsconfig.json", 
+		"t": "echo \"test skip\"",
+		"s": "tsc -p tsconfig.json --watch"
+  },
+  "keywords": [], 
+  "dependencies": {
+    "@babel/core": "^7.15.0",
+    "@types/node": "^14.0.0",
+    "@types/jest": "^27.0.1"
+  },
+  "devDependencies": { 
+    "@build-tools/tsdx": "^0.0.1",
+    "react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"react-is": "^17.0.2", 
+		"jest": "^27.0.6",
+		"jest-watch-typeahead": "0.6.4",
+		"ts-jest": "^27.0.4", 
+    "tslib": "^2.4.1",
+		"typescript": "~4.5.5" 
+  },
+  "husky": {
+    "hooks": {}
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  }
+}

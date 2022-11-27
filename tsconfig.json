@@ -1,0 +1,15 @@
+{
+  "extends": "./base.tsconfig.json",
+  "include": [],
+  "compilerOptions": { 
+    "sourceMap": true, 
+  },
+  "references": [
+    {
+      "path": "packages/tsdx"
+    },
+    {
+      "path": "packages/example"
+    }
+  ]
+}

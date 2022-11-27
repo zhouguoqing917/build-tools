@@ -1,0 +1,37 @@
+{
+  "name": "@build-tools/monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "prepare": "lerna run prepare",
+    "clean": "rimraf \"packages/**/lib\" \"packages/**/*.tsbuildinfo\"",
+    "build": "lerna run build",
+    "publish:next": "lerna publish preminor --exact --canary --preid next --dist-tag next --no-git-reset --no-git-tag-version --no-push --yes && yarn -s publish:check",
+    "publish:check": "node scripts/check-publish.js",
+    "compile": "tsc -b",
+    "prettier": "prettier \"*.{js,json,yml,md}\" \"packages/**/*\"",
+    "format": "npm run prettier -- --write",
+    "format:check": "npm run prettier -- --check",
+    "lint": "npm run format:check",
+    "demo": "yarn -s --cwd packages/example",
+    "tsdx": "yarn -s --cwd packages/tsdx",
+    "test": "lerna run test" 
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.0",
+    "rimraf": "^3.0.2",
+    "execa": "^5.1.1",
+		"fs-extra": "^10.1.0",
+    "chalk": "^4.1.2",
+    "concurrently": "^3.5.0",
+    "lerna": "6.0.1",
+    "prettier": "2.7.1",
+    "globby": "^11.1.0",
+		"ts-jest": "^27.0.4",
+		"tslib": "^2.4.1",
+		"typescript": "~4.5.5" 
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

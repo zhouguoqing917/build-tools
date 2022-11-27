@@ -1,0 +1,15 @@
+{
+  "extends": "../../base.tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "*": ["node_modules/*"]
+    },
+  },
+  "include": ["src", "types", "*.d.ts"],
+}
