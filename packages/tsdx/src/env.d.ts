@@ -2,6 +2,7 @@ declare module "asyncro"; // doesn't have types (unmerged 2+ year old PR: https:
 declare module "enquirer"; // doesn't have types for Input or Select
 declare module "postcss-import";  
 declare module "tiny-glob/sync";  
+declare module "chokidar";  
 declare module "@csstools/postcss-sass";  
  
 // Patch Babel

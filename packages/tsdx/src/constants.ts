@@ -9,6 +9,8 @@ export const paths = {
 	appErrorsJson: resolveApp("errors/codes.json"),
 	appErrors: resolveApp("errors"),
 	appDist: resolveApp("lib"),
+	appSrcAssets: resolveApp("src/assets"),
+	appLibAssets: resolveApp("lib/assets"),
 	appConfig: resolveApp("tsdx.config.js"),
 	jestConfig: resolveApp("jest.config.js"),
 	postcssConfig: resolveApp("postcss.config.js"),

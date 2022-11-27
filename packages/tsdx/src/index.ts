@@ -48,7 +48,7 @@ import {
 import { createProgressEstimator } from "./createProgressEstimator";
 import { templates } from "./templates";
 import { composePackageJson } from "./templates/utils";
-import { compilerStyle } from "./buildCss";
+import { compilerStyle } from "./buildScss";
 const pkg = require("../package.json");
 
 const prog = sade("tsdx");
@@ -96,11 +96,8 @@ async function getInputs(
 					: (source && resolveApp(source)) ||
 							((await isDir(resolveApp("src"))) && (await jsOrTs("src/index")))
 			)
-			.map((file) => {
-				console.log('xxxxx===> '+file)
-				const v= glob(file);
-				console.log('xxxxxvvv===> ',JSON.stringify(v))
-				return v;
+			.map((file) => { 
+				return  glob(file);  
 			})
 	);
 }
@@ -380,8 +377,7 @@ prog
 		"build --extractErrors=https://reactjs.org/docs/error-decoder.html?invariant="
 	)
 	.action(async (dirtyOpts: BuildOpts) => {
-		const opts = await normalizeOpts(dirtyOpts);
-		console.log("build opts" ,opts);
+		const opts = await normalizeOpts(dirtyOpts); 
 		const buildConfigs = await createBuildConfigs(opts);
 		await cleanDistFolder();
 		const logger = await createProgressEstimator();
@@ -476,22 +472,24 @@ function setAuthorName(author: string) {
 
 prog
 	.command("style")
-	.describe("Build your project style scss and css once and exit")
+	.describe("style your project  scss and css once and exit")
 	.option("--entry, -i", "Entry module")
-	.example("build --entry src/index.scss,src/other/index.scss")  
+	.example("style --entry src/index.scss")  
 	.option("--name", "Specify name exposed in css builds")
-	.example("build --name index")  
-	.option("--target", "Specify your target environment", "browser")
-	.example("build --target browser") 
+	.example("style --name index")  
+	.option("--target", "Specify your target environment default browser", "browser")
+	.example("style --target browser") 
+	.option("--watch", "watch scss file change", false)
+	.example("style --watch false") 
 	.action(async (styleOpts: StyleOpts) => {  
 		try { 
+			const logger = await createProgressEstimator();
 			styleOpts.name = styleOpts.name || appPackageJson.name;
 			styleOpts.entry = styleOpts.entry || '';
-		 
-			console.log("style compiler options " ,styleOpts);
+			styleOpts.watch = styleOpts.watch || false; 
 			// await cleanDistFolder();
-			await compilerStyle(styleOpts); 
-			console.log( "Building styles "); 
+			const ret = await compilerStyle(styleOpts); 
+			logger(ret, "Building styles done!"); 
 		} catch (error) {
 			logError(error);
 			process.exit(1);

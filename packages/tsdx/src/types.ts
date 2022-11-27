@@ -20,6 +20,7 @@ export interface StyleOpts extends SharedOpts {
 	name?: string;
 	entry?: string | string[]; 
 	outdir: string;
+	watch?:boolean;
 }
 
 export interface WatchOpts extends BuildOpts {
